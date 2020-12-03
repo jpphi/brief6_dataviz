@@ -1,8 +1,15 @@
-rendu: brief6_dataviz_rendu.ipynb
-Ce fichier ne contient pas le cours mais seulement les questions et réponse du brief
+rendu:
+	brief6_dataviz_rendu.ipynb
+	fichiers contenu dans le répertoire prj en ce qui concerne dash
+
+brief6_dataviz_rendu.ipynb ne contient pas le cours mais seulement les questions et réponse du brief (hors dash)
+
 Pour tester:
 	exécutable: brief6_dataviz_rendu.ipynb
-	créer un sous répertoire data
+	créer un sous répertoire data au même niveau que le répertoire prj
 	fichier de données dans le sous répertoire data:
 		timesData.csv qui sera crée dans la partie 0 du brief.
-		À noter qu'un fichier timesData_Original.csv à été créer contenant.... l'original du fichier de données! Étonnant non ? C'est ce fichier qui sera chargé dans la partie 0 du brief "nettoyage du jeux de donnée" puis sera sauvegardé sous le nom "timesData.csv
+	fichiers dans le sous répertoire prj contient l'ensemble des fichiers concernant le projet dash
+
+À noter qu'un fichier timesData_Original.csv à été créer contenant.... l'original du fichier de données! Étonnant non ? C'est ce fichier qui sera chargé dans la partie 0 du brief "nettoyage du jeux de donnée" puis sera sauvegardé sous le nom "timesData.csv
+		
