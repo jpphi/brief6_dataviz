@@ -15,8 +15,6 @@ from pages import page1, page2
 
 external_stylesheets = ['style.css']
 
-
-
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
     dcc.Link('Back to Main Menu', href='/'),
@@ -37,7 +35,7 @@ def display_page(pathname):
     elif pathname == '/pages/page2':
         return page2.layout
     else:
-        return '/index'
+        return ''
 
 if __name__ == '__main__':
     app.run_server(debug=True)

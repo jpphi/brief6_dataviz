@@ -12,6 +12,7 @@ Created on Fri Nov 27 15:45:30 2020
 Created on Fri Nov 27 15:41:54 2020
 
 @author: jpphi
+Analyse en composante principal
 """
 
 import dash_core_components as dcc
