@@ -22,7 +22,7 @@ from dash.dependencies import Input, Output
 from app import app
 
 layout = html.Div([
-    html.H3('App 2'),
+    html.H3('Analyse en composantes principales.'),
     dcc.Dropdown(
         id='app-2-dropdown',
         options=[
@@ -32,7 +32,7 @@ layout = html.Div([
         ]
     ),
     html.Div(id='app-2-display-value'),
-    dcc.Link('Go to App 1', href='/pages/page1')
+    dcc.Link('Retour à la page 1.', href='/pages/page1')
 ])
 
 
