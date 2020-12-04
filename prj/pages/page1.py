@@ -27,15 +27,15 @@ df2016 = tableau_complet [tableau_complet.year == 2016].iloc[:50,:]
 
 layout = html.Div([
     html.H3(children='Visualisation des données sous forme de tableau et de graphique.'),
-    html.Button('Chargement', id='chargement_val', n_clicks=0),
+    html.Button('Visualisation tableau', id='chargement_val', n_clicks=0),
 
-    html.Button('Visualisation des données', id='visu01', n_clicks=0),
+    html.Button('NE SERT À RIEN', id='visu01', n_clicks=0),
 
     dcc.Dropdown(
         id='app-1-dropdown',
         options=[
-            {'label': 'Page 1 - {}'.format(i), 'value': i} for i in [
-                'Graph 1', 'Graph 2', 'Graph 3'
+            {'label': 'world_rank / {}'.format(i), 'value': i} for i in [
+                'research', 'income', 'teaching'
             ]
         ]),
     html.Div(id='app-1-display-value'),
@@ -43,26 +43,11 @@ layout = html.Div([
     html.Div("Chargement demandée",id='container-button-visu'),
     html.Div("Chargement demandée",id='container-button-basic'),
 
-    dcc.Graph(id='graph-with-slider'),
-    dcc.Slider(id='year-slider'),
-
+    dcc.Graph(id='graph'),
 
     dcc.Link('Go to App 2', href='/pages/page2')
     #,    classement(df2016)
 ])
-
-@app.callback(
-    Output('graph-with-slider', 'figure'),
-    Input('year-slider', 'value'))
-def update_figure(selected_year):
-    #filtered_df = df[df.year == selected_year]
-
-    fig = px.scatter(df2016, x="world_rank", y="research", color="country", hover_name="country")
-
-    fig.update_layout(transition_duration=500)
-
-    return fig
-
 
 
 @app.callback(
@@ -97,7 +82,24 @@ def classement(n_clicks):
         ])
     ])
 
+@app.callback(
+    Output('graph', 'figure'),
+    Input('app-1-dropdown', 'value'))
+#    Input('year-slider', 'value'))
+def update_figure(value):
+    if value== "research":
+    #filtered_df = df[df.year == selected_year]
+        fig = px.scatter(df2016, x="world_rank", y="research", color="country", hover_name="country")
+        return fig
+    elif value== "income":
+        fig = px.scatter(df2016, x="world_rank", y="income", color="country", hover_name="country")
+        return fig
 
+    else :
+        fig = px.scatter(df2016, x="world_rank", y="teaching", color="country", hover_name="country")
+        return fig
+
+"""
 @app.callback(
     Output('app-1-display-value', 'children'),
     Input('app-1-dropdown', 'value'))
@@ -110,4 +112,4 @@ def display_value(value):
         return "Graph 3 à afficher"
     return 'Pas de graphe sélectionné.'
 #    return 'Valeur sélectionnée "{}"'.format(value)
-
+"""
