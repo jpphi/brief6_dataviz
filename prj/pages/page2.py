@@ -26,8 +26,8 @@ layout = html.Div([
     dcc.Dropdown(
         id='app-2-dropdown',
         options=[
-            {'label': 'App 1 - {}'.format(i), 'value': i} for i in [
-                'NYC', 'MTL', 'LA'
+            {'label': 'Page 2 - {}'.format(i), 'value': i} for i in [
+                'Graph 1', 'Graph 2', 'Graph 3'
             ]
         ]
     ),
@@ -40,4 +40,20 @@ layout = html.Div([
     Output('app-2-display-value', 'children'),
     Input('app-2-dropdown', 'value'))
 def display_value(value):
+    if value== "Graph 1":
+        return(dcc.Graph(src="coyote.png"))
+        return "Graph1 à afficher"
+    if value== "Graph 2":
+        return "Graph 2 à afficher"
+    if value== "Graph 3":
+        return "Graph 3 à afficher"
+    return 'Pas de graphe sélectionné.'
+#    return 'Valeur sélectionnée "{}"'.format(value)
+
+"""
+@app.callback(
+    Output('app-2-display-value', 'children'),
+    Input('app-2-dropdown', 'value'))
+def display_value(value):
     return 'You have selected "{}"'.format(value)
+"""

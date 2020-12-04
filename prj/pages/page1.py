@@ -13,10 +13,15 @@ from dash.dependencies import Input, Output
 
 from app import app
 
+import plotly.express as px
+
 #app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 tableau_complet = pd.read_csv('../data/timesData.csv')
 df2016 = tableau_complet [tableau_complet.year == 2016].iloc[:50,:]
+
+
+
 
 
 
@@ -38,9 +43,27 @@ layout = html.Div([
     html.Div("Chargement demandée",id='container-button-visu'),
     html.Div("Chargement demandée",id='container-button-basic'),
 
+    dcc.Graph(id='graph-with-slider'),
+    dcc.Slider(id='year-slider'),
+
+
     dcc.Link('Go to App 2', href='/pages/page2')
     #,    classement(df2016)
 ])
+
+@app.callback(
+    Output('graph-with-slider', 'figure'),
+    Input('year-slider', 'value'))
+def update_figure(selected_year):
+    #filtered_df = df[df.year == selected_year]
+
+    fig = px.scatter(df2016, x="world_rank", y="research", color="country", hover_name="country")
+
+    fig.update_layout(transition_duration=500)
+
+    return fig
+
+
 
 @app.callback(
     Output('container-button-visu','children'),
